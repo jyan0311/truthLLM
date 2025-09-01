@@ -8,17 +8,19 @@ Modern LLMs are fine-tuned to be helpful and harmless. If you ask them to do som
 
 Here's an example of a well-behaved, aligned LLM saying "no" to a harmful prompt:
 
-\<p align="center"\>
-\<img src="figures/harmful\_prompt.png" width="500"/\>
-\</p\>
+<p align="center">
+  <img src="figures/harmful_prompt.png" width="500"/>
+</p>
+
 
 But what if someone tries to trick the LLM? 😈 These "adversarial attacks" add a special, sneaky sequence of words to a harmful prompt, tricking the LLM into generating unsafe content. It's like a secret password to bypass the safety rules\!
 
 Check out how a simple attack can break the safety alignment:
 
-\<p align="center"\>
-\<img src="figures/adversarial\_attack.png" width="500"/\>
-\</p\>
+<p align="center">
+  <img src="figures/adversarial_attack.png" width="500"/>
+</p>
+
 
 These attacks can even be automated using algorithms like GCG, creating an endless supply of jailbreaks. 😱
 
