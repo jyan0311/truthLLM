@@ -1,7 +1,3 @@
-Of course\! Here is a rewritten version of your README, tailored for your FIT5230 course project, with plenty of emojis as requested.
-
------
-
 # FIT5230 Project: Certifying LLM Safety against Adversarial Prompting 🛡️ defending LLM Safety\!
 
 Welcome to our repository for FIT5230\! 🎉🎉🎉 We're tackling the exciting challenge of making Large Language Models (LLMs) safer against clever attacks.
