@@ -49,9 +49,11 @@ We tested our defense against three types of attacks:
 
 Here’s a cool visual of Erase-and-Check in action\!
 
-\<p align="center"\>
-\<img src="figures/erase-and-check.png" width="700"/\>
-\</p\>
+
+<p align="center">
+  <img src="figures/erase-and-check.png" width="700"/>
+</p>
+
 
 ## 📂 What's In This Repository?
 
@@ -87,138 +89,5 @@ python main.py --num_prompts 520 --eval_type harmful --harmful_prompts data/harm
 # For the DistilBERT filter
 python main.py --num_prompts 120 --eval_type harmful --use_classifier --model_wt_path models/[model-weights-file].pt --harmful_prompts data/harmful_prompts_test.txt
 ```
-
-## ⚔️ Attack Mode 1: Adversarial Suffix
-
-Here's how our two defenses perform on **safe prompts** under a suffix attack. We want the accuracy to be high (not misclassifying safe as harmful) and the run time to be low\!
-
-\<p align="center"\>
-\<img src="results/comparison\_safe\_suffix\_acc.png" width="300" style="margin-right: 20px;"/\>
-\<img src="results/comparison\_safe\_suffix\_time.png" width="300"/\>
-\</p\>
-
-👉 Use `bash scripts/jobs_suffix.sh` to get these results\!
-
-## ⚔️ Attack Mode 2: Adversarial Insertion
-
-Now for the insertion attack\! Here's the performance comparison on safe prompts:
-
-\<p align="center"\>
-\<img src="results/comparison\_safe\_insertion\_acc.png" width="300" style="margin-right: 20px;"/\>
-\<img src="results/comparison\_safe\_insertion\_time.png" width="300"/\>
-\</p\>
-
-👉 Use `bash scripts/jobs_insertion.sh` to get these results\!
-
-## ⚔️ Attack Mode 3: Adversarial Infusion
-
-And finally, the tricky infusion attack\! Performance on safe prompts:
-
-\<p align="center"\>
-\<img src="results/comparison\_safe\_infusion\_acc.png" width="300" style="margin-right: 20px;"/\>
-\<img src="results/comparison\_safe\_infusion\_time.png" width="300"/\>
-\</p\>
-
-👉 Use `bash scripts/jobs_infusion.sh` to get these results\!
-
-## 🏋️‍♂️ Training Our Safety Classifier
-
-We trained our DistilBERT classifier on the safe and harmful prompts in the `data/` directory. To make it robust, we also included the erased subsequences of safe prompts in the training data, teaching the model that these fragments are also safe.
-
-To train your own classifier, use this command:
-
-```bash
-python safety_classifier.py --safe_train data/safe_prompts_train_[mode]_erased.txt --safe_test data/safe_prompts_test_[mode]_erased.txt --save_path models/distilbert_[mode].pt
-```
-
-Or just run our handy script: `bash scripts/train_safety_clf.sh`\!
-
-Don't want to wait? You can download our pre-trained models from this [Dropbox link](https://www.dropbox.com/scl/fi/ux4ew8y88uslu5064r2xh/models.zip?rlkey=4bo1njpnj4nc801tw1pkby52o&dl=0). 🎁
-
-## ⚡️ Efficient Empirical Defenses
-
-Our certified method checks *everything*, which can be a bit slow. So, we also developed three faster "empirical" defenses. They don't come with a mathematical guarantee, but they are very effective in practice\!
-
-1.  **RandEC** 🎲: Randomly samples and checks a subset of the erased subsequences.
-2.  **GreedyEC** 🤔: Greedily erases tokens that are most likely to be part of a harmful phrase.
-3.  **GradEC** 📈: Uses gradients to smartly decide which tokens to erase.
-
-We tested them against the GCG attack. Below are the results\!
-
-### RandEC Performance
-
-\<p align="center"\>
-\<img src="results/empirical\_suffix\_120\_clf\_rand.png" width="400"/\>
-\</p\>
-👉 Run `bash scripts/jobs_rand_ec.sh` to reproduce.
-
-### GreedyEC Performance
-
-\<p align="center"\>
-\<img src="results/greedy\_ec\_120\_clf.png" width="400"/\>
-\</p\>
-👉 Run `bash scripts/jobs_greedy_ec.sh` to reproduce.
-
-### GradEC Performance
-
-\<p align="center"\>
-\<img src="results/grad\_ec\_120\_clf.png" width="400"/\>
-\</p\>
-👉 Run `bash scripts/jobs_grad_ec.sh` to reproduce.
-
-## 🛠️ Get Set Up\! Installation Guide
-
-Ready to run the code? Follow these steps to set up your environment.
-
-1.  **Install Anaconda** 🐍
-
-      * Download the installer from [anaconda.com](https://www.anaconda.com/products/distribution).
-      * Run the installer script in your terminal.
-
-2.  **Create a Conda Environment** 🌱
-
-    ```bash
-    conda create -n fit5230_env python=3.10
-    ```
-
-3.  **Activate the Environment** ✅
-
-    ```bash
-    conda activate fit5230_env
-    ```
-
-4.  **Install PyTorch with CUDA** 🔥
-
-      * Head over to the [PyTorch website](https://pytorch.org/) for the command specific to your system. It should look something like this:
-
-    <!-- end list -->
-
-    ```bash
-    conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-    ```
-
-5.  **Install Huggingface Transformers** 🤗
-
-    ```bash
-    conda install -c huggingface transformers
-    ```
-
-6.  **Install Accelerate** 🚀
-
-    ```bash
-    conda install -c conda-forge accelerate
-    ```
-
-7.  **Install Scikit-learn** 🧠
-
-    ```bash
-    conda install -c anaconda scikit-learn
-    ```
-
-8.  **Install Seaborn** 📊
-
-    ```bash
-    conda install anaconda::seaborn
-    ```
 
 You should be all set\! Happy coding and thanks for checking out our project\! 😊
