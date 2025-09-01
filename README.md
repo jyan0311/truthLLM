@@ -1,6 +1,6 @@
 # Certifying LLM Safety against Adversarial Prompting
 
-This repository contains code for the paper [Certifying LLM Safety against Adversarial Prompting](https://arxiv.org/abs/2309.02705).
+This repository contains code for the FIT5230！！🎉🎉🎉
 
 Contents:
 
