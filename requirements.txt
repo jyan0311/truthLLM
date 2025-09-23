@@ -1,0 +1,11 @@
+transformers==4.38.2
+torch==2.2.1
+sentence-transformers==2.7.0
+pandas==1.5.3
+numpy==1.25.2
+gdown==4.7.3
+openai==1.14.3
+ipywidgets==7.7.2
+accelerate==0.28.0
+einops==0.7.0
+xformers==0.0.25
